@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_goneMarginStart="8dp"
+    app:layout_goneMarginTop="8dp"
+    android:layout_height="100dp"
+    android:paddingBottom="15dp"
+    app:layout_goneMarginEnd="8dp"
+     >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/app_name"
+            android:layout_width="164dp"
+            android:layout_height="28dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="-177dp"
+            android:gravity="center"
+            android:hint="Patient Name"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/app_dob"
+            android:layout_width="108dp"
+            android:layout_height="28dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="81dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:hint="Date of Birth"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/app_date"
+            android:layout_width="146dp"
+            android:layout_height="28dp"
+            android:layout_below="@+id/app_name"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/imageView"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:hint="Date"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/app_time"
+            android:layout_width="146dp"
+            android:layout_height="28dp"
+            android:layout_below="@+id/app_dob"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="71dp"
+            android:gravity="center"
+            android:hint="Time"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="78dp"
+            android:layout_marginBottom="4dp"
+            android:background="#000" />
+
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

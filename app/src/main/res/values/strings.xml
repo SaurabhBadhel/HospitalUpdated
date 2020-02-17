@@ -1,0 +1,89 @@
+<resources>
+    <string name="app_name">Hospital</string>
+    <string name="title_activity_doctor_screen">DoctorScreen</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_logout">Logout</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="full_name">full name</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="phone">phone</string>
+    <string name="register">Register</string>
+    <string name="input_error_name">name required</string>
+    <string name="input_error_age">age required</string>
+    <string name="input_error_dob">Date Of Birth required</string>
+    <string name="input_error_sex">Gender required</string>
+    <string name="input_error_email">email required</string>
+    <string name="input_error_password">password required</string>
+    <string name="input_error_phone">phone required</string>
+    <string name="input_error_password_length">password should be 6 characters long</string>
+    <string name="input_error_phone_invalid">enter a valid phone number</string>
+    <string name="registration_success">Registered Successfully</string>
+    <string name="input_error_email_invalid">enter a valid email</string>
+
+
+    <string-array name="time_AM_array">
+        <item>9 am</item>
+        <item>9:15 am</item>
+        <item>9:30 am</item>
+        <item>9:45 am</item>
+        <item>10 am</item>
+        <item>10:15 am</item>
+        <item>10:30 am</item>
+        <item>10:45 am</item>
+        <item>11 am</item>
+        <item>11:15 am</item>
+        <item>11:30 am</item>
+        <item>11:45 am</item>
+        <item>12 am</item>
+    </string-array>
+
+    <string-array name="time_PM_array">
+        <item>6 pm</item>
+        <item>6:15 pm</item>
+        <item>6:30 pm</item>
+        <item>6:45 pm</item>
+        <item>7 pm</item>
+        <item>7:15 pm</item>
+        <item>7:30 pm</item>
+        <item>7:45 pm</item>
+        <item>8 pm</item>
+        <item>8:15 pm</item>
+        <item>8:30 pm</item>
+        <item>8:45 pm</item>
+        <item>9
+            pm</item>
+    </string-array>
+    <string name="title_activity_doctor_tab">DoctorTab</string>
+    <string name="tab_text_1">Prescription</string>
+    <string name="tab_text_2">History</string>
+    <string name="tab_text_3">Appointment</string>
+    <string name="tab_text_4">Prescription</string>
+    <string name="title_activity_patient_tab">PatientTab</string>
+
+    <string-array name="bloodGroup">
+        <item>A+</item>
+        <item>B+</item>
+        <item>AB+</item>
+        <item>O+</item>
+        <item>A-</item>
+        <item>B-</item>
+        <item>AB-</item>
+        <item>O-</item>
+    </string-array>
+    <string-array name="gen">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+</resources>

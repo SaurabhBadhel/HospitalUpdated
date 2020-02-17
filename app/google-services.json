@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "997577188198",
+    "firebase_url": "https://hospitalproject-197be.firebaseio.com",
+    "project_id": "hospitalproject-197be",
+    "storage_bucket": "hospitalproject-197be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997577188198:android:e45d11df26dd2191f3dea7",
+        "android_client_info": {
+          "package_name": "com.pureintentions.hospital"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "997577188198-c7ju80q46etp3fpdjiv36vlmmamuar90.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pureintentions.hospital",
+            "certificate_hash": "0329aa8295aa506f735681e4181f663b794ddf96"
+          }
+        },
+        {
+          "client_id": "997577188198-3kci0emfeq2a3mvjlpu7gjklkffkcvd6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVmbIeRIwEMRxmROXg6t4oYtNSrsoFPCU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "997577188198-3kci0emfeq2a3mvjlpu7gjklkffkcvd6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
