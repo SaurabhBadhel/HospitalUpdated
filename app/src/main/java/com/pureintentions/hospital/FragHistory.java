@@ -49,7 +49,7 @@ public class FragHistory extends Fragment{
         String UID= intent1.getStringExtra(Uid);
         FirebaseFirestore db=FirebaseFirestore.getInstance();
         CollectionReference reference=db.collection( "Prescription" );
-        Query query=reference.whereEqualTo("Uid",UID).orderBy("Date",Query.Direction.ASCENDING);
+        Query query=reference.whereEqualTo("Uid",UID).orderBy("Date",Query.Direction.DESCENDING);
         Query query1=reference.orderBy( "name", Query.Direction.ASCENDING);
         FirestoreRecyclerOptions<History> options=new FirestoreRecyclerOptions.Builder<History>().setQuery( query,History.class ).build();
         adapter=new HistoryAdapter( options );
