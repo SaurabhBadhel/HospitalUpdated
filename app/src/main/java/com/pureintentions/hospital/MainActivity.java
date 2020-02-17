@@ -53,7 +53,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //close this activity
             finish();
             //opening profile activity
-            startActivity(new Intent(getApplicationContext(), DoctorSearchScreen.class));
+            startActivity(new Intent(getApplicationContext(), DoctorSearchScreen.class)); db.collection( "Users" ).document( firebaseAuth.getCurrentUser().getUid() ).addSnapshotListener( new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                    //  DataSnapshot data = (DataSnapshot) documentSnapshot.getData();
+                    // documentSnapshot.getData();
+                    String userRole = documentSnapshot.getString("role");
+
+                    if("DOCTOR".equalsIgnoreCase(userRole))
+                    {
+                        Intent inDoctor = new Intent(MainActivity.this, DoctorSearchScreen.class);
+                        inDoctor.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(inDoctor);
+                        finish();
+                    }
+                    else
+                    if("PATIENT".equalsIgnoreCase(userRole))
+                    {
+                        Intent inPatient = new Intent(MainActivity.this, PatientTab.class);
+                        inPatient.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(inPatient);
+                        finish();
+                    }
+
+
+                }
+            } );
         }
         register=findViewById( R.id.register );
         email=findViewById( R.id.email );
