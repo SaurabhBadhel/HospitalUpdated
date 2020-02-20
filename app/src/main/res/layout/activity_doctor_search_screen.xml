@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
+    android:background="#FFFFFF"
     tools:context=".DoctorSearchScreen">
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
-        android:layout_width="371dp"
-        android:layout_height="860dp"
+        android:layout_width="450dp"
+        android:layout_height="857dp"
         android:layout_alignParentStart="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
@@ -20,14 +21,16 @@
 
     <SearchView
         android:id="@+id/actionSearch"
-        android:layout_width="371dp"
-        android:layout_height="49dp"
+        android:layout_width="450dp"
+        android:layout_height="64dp"
         android:layout_above="@+id/list"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="32dp"
         android:background="#FDEFEFF3"
+        android:focusable="auto"
+        android:focusableInTouchMode="true"
         android:queryHint="Search Patient Name"
         app:layout_constraintBottom_toTopOf="@+id/list"
         app:layout_constraintEnd_toEndOf="parent"

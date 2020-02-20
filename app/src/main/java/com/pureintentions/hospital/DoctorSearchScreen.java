@@ -50,7 +50,10 @@ public class DoctorSearchScreen extends AppCompatActivity {
 
 
         searchView = (SearchView) findViewById(R.id.actionSearch);
-        //mSearchBtn = (ImageButton) findViewById(R.id.search_btn);
+        searchView.setIconifiedByDefault(true);
+        searchView.setFocusable(true);
+        searchView.setIconified(false);
+        searchView.requestFocusFromTouch();
 
         mResultList = (RecyclerView) findViewById(R.id.list);
         mResultList.setHasFixedSize(true);

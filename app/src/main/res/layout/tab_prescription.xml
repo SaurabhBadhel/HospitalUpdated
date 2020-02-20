@@ -373,6 +373,7 @@
             android:layout_marginTop="7dp"
             android:layout_marginEnd="8dp"
             android:background="#1F6CF1"
+            android:capitalize="none"
             android:clickable="true"
             android:gravity="center"
             android:text="Add New"

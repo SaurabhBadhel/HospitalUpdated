@@ -29,47 +29,47 @@ import com.pureintentions.hospital.Doctor.LoggedInUser;
 import com.pureintentions.hospital.Doctor.LoginRepository;
 import com.pureintentions.hospital.Patient.PatientTab;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    Button signin,dr;
-    EditText email,password;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    Button signin, dr;
+    EditText email, password;
     TextView register;
     private FirebaseAuth firebaseAuth;
-    private FirebaseFirestore db  = FirebaseFirestore.getInstance();
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final CollectionReference reference = db.collection( "Users" );
+        final CollectionReference reference = db.collection("Users");
         firebaseAuth = FirebaseAuth.getInstance();
-        dr=findViewById( R.id.dr );
-        dr.setOnClickListener( new View.OnClickListener() {
+        dr = findViewById(R.id.dr);
+        dr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent( MainActivity.this,PatientTab.class );
-                startActivity( intent );
+                Intent intent = new Intent(MainActivity.this, DoctorSearchScreen.class);
+                startActivity(intent);
             }
-        } );
-        if(firebaseAuth.getCurrentUser() != null){
+        });
+
+        if (firebaseAuth.getCurrentUser() != null) {
             //close this activity
             finish();
             //opening profile activity
-            startActivity(new Intent(getApplicationContext(), DoctorSearchScreen.class)); db.collection( "Users" ).document( firebaseAuth.getCurrentUser().getUid() ).addSnapshotListener( new EventListener<DocumentSnapshot>() {
+            startActivity(new Intent(getApplicationContext(), DoctorSearchScreen.class));
+            db.collection("Users").document(firebaseAuth.getCurrentUser().getUid()).addSnapshotListener(new EventListener<DocumentSnapshot>() {
                 @Override
                 public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                     //  DataSnapshot data = (DataSnapshot) documentSnapshot.getData();
                     // documentSnapshot.getData();
                     String userRole = documentSnapshot.getString("role");
 
-                    if("DOCTOR".equalsIgnoreCase(userRole))
-                    {
+                    if ("DOCTOR".equalsIgnoreCase(userRole)) {
                         Intent inDoctor = new Intent(MainActivity.this, DoctorSearchScreen.class);
                         inDoctor.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(inDoctor);
                         finish();
-                    }
-                    else
-                    if("PATIENT".equalsIgnoreCase(userRole))
-                    {
+                    } else if ("PATIENT".equalsIgnoreCase(userRole)) {
                         Intent inPatient = new Intent(MainActivity.this, PatientTab.class);
                         inPatient.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(inPatient);
@@ -78,13 +78,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
                 }
-            } );
+            });
         }
-        register=findViewById( R.id.register );
-        email=findViewById( R.id.email );
-        password=findViewById( R.id.password );
-        signin=findViewById( R.id.signin );
-        signin.setOnClickListener(this );
+        register = findViewById(R.id.register);
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
+        //signin=findViewById( R.id.signin );
+        //signin.setOnClickListener(this );
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,16 +94,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
     }
-    public void userLogin(){
+
+    public void userLogin() {
         String mail = email.getText().toString().trim();
-        String pass  = password.getText().toString().trim();
+        String pass = password.getText().toString().trim();
         //checking if email and passwords are empty
-        if(TextUtils.isEmpty(mail)){
-            Toast.makeText(MainActivity.this,"Please enter email",Toast.LENGTH_LONG).show();
+        if (TextUtils.isEmpty(mail)) {
+            Toast.makeText(MainActivity.this, "Please enter email", Toast.LENGTH_LONG).show();
             return;
         }
-        if(TextUtils.isEmpty(pass)){
-            Toast.makeText(MainActivity.this,"Please enter password",Toast.LENGTH_LONG).show();
+        if (TextUtils.isEmpty(pass)) {
+            Toast.makeText(MainActivity.this, "Please enter password", Toast.LENGTH_LONG).show();
             return;
         }
         //if the email and password are not empty
@@ -114,44 +115,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         //if the task is successful
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             final FirebaseUser user = firebaseAuth.getCurrentUser();
-                            db.collection( "Users" ).document( firebaseAuth.getCurrentUser().getUid() ).addSnapshotListener( new EventListener<DocumentSnapshot>() {
+                            db.collection("Users").document(firebaseAuth.getCurrentUser().getUid()).addSnapshotListener(new EventListener<DocumentSnapshot>() {
                                 @Override
                                 public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                                     //  DataSnapshot data = (DataSnapshot) documentSnapshot.getData();
-                                   // documentSnapshot.getData();
+                                    // documentSnapshot.getData();
                                     String userRole = documentSnapshot.getString("role");
 
-                                    if("DOCTOR".equalsIgnoreCase(userRole))
-                                    {
+                                    if ("DOCTOR".equalsIgnoreCase(userRole)) {
                                         Intent inDoctor = new Intent(MainActivity.this, DoctorSearchScreen.class);
                                         inDoctor.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(inDoctor);
                                         finish();
-                                    }
-                                    else
-                                    if("PATIENT".equalsIgnoreCase(userRole))
-                                    {
+                                    } else if ("PATIENT".equalsIgnoreCase(userRole)) {
                                         Intent inPatient = new Intent(MainActivity.this, PatientTab.class);
                                         inPatient.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(inPatient);
                                         finish();
                                     }
-
-
                                 }
-                            } );
-                              }
-                        else {
-                            Toast.makeText( MainActivity.this, "Invalid ", Toast.LENGTH_SHORT ).show();
+                            });
+                        } else {
+                            Toast.makeText(MainActivity.this, "Invalid ", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
     }
+
     @Override
     public void onClick(View v) {
-        if(v == signin){
+        if (v == signin) {
             userLogin();
         }
     }
