@@ -79,7 +79,7 @@ public class FragPrescription extends Fragment implements View.OnClickListener, 
     EditText medName1, medName2, medName3, age, height, weight, day1, day2, day3, bp, patientName;
     TextView date, remark1, cliName;
     ImageView remark;
-    Button sendPrescription, btnPrint;
+    Button sendPrescription, btnPrint,addMedi;
     FirebaseFirestore Store;
     Spinner bgSpin,genderSpin;
     public static final String TAG = "TAG";
@@ -94,12 +94,13 @@ public class FragPrescription extends Fragment implements View.OnClickListener, 
         final View view = inflater.inflate(R.layout.tab_prescription, container, false);
         //  return inflater.inflate(R.layout.tab_prescription,container,false);
 
+        addMedi=view.findViewById(R.id.addMedi);
         date = view.findViewById(R.id.date);
         patientName = view.findViewById(R.id.patientName);
-        medName1=view.findViewById( R.id.medName1 );
+       // medName1=view.findViewById( R.id.medName1 );
         //medName2=findViewById( R.id.medName2 );
         //medName3=findViewById( R.id.medName3 );
-        day1=view.findViewById( R.id.duration1 );
+        //day1=view.findViewById( R.id.duration1 );
         //day2=findViewById( R.id.Duration2 );
         //day3=findViewById( R.id.Duration3 );
         bgSpin=view.findViewById(R.id.spn_bg);
@@ -128,6 +129,13 @@ public class FragPrescription extends Fragment implements View.OnClickListener, 
             }
         });
 
+        addMedi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(),AddMedicine.class);
+                startActivity(intent);
+            }
+        });
 
         ArrayAdapter<CharSequence> adap=ArrayAdapter.createFromResource(getContext(),R.array.bloodGroup,android.R.layout.simple_spinner_item);
         adap.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -471,7 +479,7 @@ public class FragPrescription extends Fragment implements View.OnClickListener, 
         startActivity(new Intent(getActivity().getApplicationContext(),DoctorSearchScreen.class));
     }
 
-
+/*
     public void selectItem1(View v) {
         boolean checked=((Switch)v).isChecked();
         switch (v.getId())
@@ -516,7 +524,7 @@ public class FragPrescription extends Fragment implements View.OnClickListener, 
                 }
                 break;
         }
-    }
+    }*/
 
     @Override
     public void onClick(View v) {

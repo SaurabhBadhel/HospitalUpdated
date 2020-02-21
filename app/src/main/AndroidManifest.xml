@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DrPrescriptionHistory"></activity>
+        <activity android:name=".AddMedicine"></activity>
+        <activity android:name=".DrPrescriptionHistory" />
         <activity
             android:name=".DoctorTab"
             android:label="@string/title_activity_doctor_tab"
@@ -34,7 +35,9 @@
             android:label="@string/title_activity_doctor_screen"
             android:parentActivityName=".DoctorSearchScreen"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity" android:theme="@style/AppTheme.NoActionBar">
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
