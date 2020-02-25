@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String mail = email.getText().toString().trim();
         String pass = password.getText().toString().trim();
         //checking if email and passwords are empty
-        blockUI(progressBar,email, password, View.GONE, false);
+        blockUI(progressBar,email, password, View.VISIBLE, false);
         if (TextUtils.isEmpty(mail)) {
             Toast.makeText(MainActivity.this, "Please enter email", Toast.LENGTH_LONG).show();
             return;
@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     }catch (Exception f) {
                                         Log.e("ERROR", "Exception in user authentication", f);
                                     }finally {
-                                        //blockUI(progressBar, email, password, View.GONE, true);
+                                        blockUI(progressBar, email, password, View.GONE, true);
                                     }
 
                                 }
@@ -177,6 +177,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             });
                         } else {
                             Toast.makeText(MainActivity.this, "Invalid ", Toast.LENGTH_SHORT).show();
+                            blockUI(progressBar, email, password, View.GONE, true);
                         }
                     }
                 });

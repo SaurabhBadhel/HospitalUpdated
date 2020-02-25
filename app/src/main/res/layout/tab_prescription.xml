@@ -20,16 +20,6 @@
         app:layout_constraintVertical_bias="1.0">
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="217dp"
-            android:layout_marginBottom="2dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView14"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent" />
-
         <TextView
             android:id="@+id/textView14"
             android:layout_width="165dp"
@@ -51,6 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="42dp"
             android:layout_marginStart="2dp"
+            android:layout_marginTop="34dp"
             android:layout_marginEnd="244dp"
             android:layout_marginBottom="20dp"
             android:background="#1F6CF1"
@@ -62,14 +53,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnPrint"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/remark1" />
 
         <Button
             android:id="@+id/btnPrint"
             android:layout_width="224dp"
             android:layout_height="42dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="18dp"
             android:background="#1F6CF1"
             android:clickable="true"
             android:text="Save and Print"
@@ -77,7 +70,8 @@
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/remark1" />
 
         <EditText
             android:id="@+id/remark1"
@@ -85,15 +79,15 @@
             android:layout_height="126dp"
             android:layout_marginStart="2dp"
             android:layout_marginEnd="2dp"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="96dp"
             android:background="#fff"
             android:ems="10"
             android:hint="Doctor's Remark"
             android:inputType="textMultiLine"
             android:textSize="15dp"
-            app:layout_constraintBottom_toTopOf="@+id/sendPrescription"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -101,18 +95,18 @@
             android:layout_width="68dp"
             android:layout_height="30dp"
             android:layout_marginStart="17dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
-            android:layout_marginBottom="46dp"
             android:gravity="left"
             android:hint="Name :"
             android:textColorHint="#000"
             android:textSize="18dp"
             app:layout_constraintBottom_toTopOf="@+id/divider2"
             app:layout_constraintEnd_toStartOf="@+id/patientName"
-            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.968" />
+            app:layout_constraintVertical_bias="0.847" />
 
         <TextView
             android:id="@+id/textView6"
@@ -301,8 +295,8 @@
             android:id="@+id/date"
             android:layout_width="160dp"
             android:layout_height="30dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="46dp"
             android:background="#fff"
             android:ems="10"
             android:enabled="false"
@@ -314,13 +308,14 @@
             app:layout_constraintBottom_toTopOf="@+id/divider2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.968" />
+            app:layout_constraintVertical_bias="0.847" />
 
         <EditText
             android:id="@+id/patientName"
             android:layout_width="320dp"
             android:layout_height="30dp"
-            android:layout_marginBottom="45dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
             android:background="#fff"
             android:ems="10"
             android:hint="Pure Intention Software solution"
@@ -330,7 +325,7 @@
             app:layout_constraintBottom_toTopOf="@+id/divider2"
             app:layout_constraintEnd_toStartOf="@+id/date"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.963" />
+            app:layout_constraintVertical_bias="0.847" />
 
         <ImageView
             android:id="@+id/remark"
@@ -385,9 +380,9 @@
             android:id="@+id/divider4"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="5dp"
             android:background="#000000"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+            app:layout_constraintBottom_toTopOf="@+id/listMed"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent" />
@@ -421,6 +416,18 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/divider4"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <ListView
+            android:id="@+id/listMed"
+            android:layout_width="591dp"
+            android:layout_height="223dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

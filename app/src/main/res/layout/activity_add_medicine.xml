@@ -23,7 +23,7 @@
             android:layout_height="match_parent">
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/medName"
                 android:layout_width="271dp"
                 android:layout_height="38dp"
                 android:layout_marginStart="47dp"
@@ -33,13 +33,13 @@
                 android:ems="10"
                 android:hint="Medicine Name"
                 android:inputType="textPersonName"
-                app:layout_constraintBottom_toTopOf="@+id/switch1"
-                app:layout_constraintEnd_toStartOf="@+id/editText3"
+                app:layout_constraintBottom_toTopOf="@+id/M"
+                app:layout_constraintEnd_toStartOf="@+id/days"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/days"
                 android:layout_width="66dp"
                 android:layout_height="41dp"
                 android:layout_marginTop="88dp"
@@ -48,73 +48,82 @@
                 android:ems="10"
                 android:hint="Days"
                 android:inputType="textPersonName"
-                app:layout_constraintBottom_toTopOf="@+id/switch2"
+                app:layout_constraintBottom_toTopOf="@+id/A"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Switch
-                android:id="@+id/switch1"
+                android:id="@+id/M"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_marginStart="50dp"
                 android:layout_marginEnd="15dp"
+                android:onClick="selectItem"
                 android:layout_marginBottom="51dp"
                 android:text="Morning"
-                app:layout_constraintBottom_toTopOf="@+id/switch4"
-                app:layout_constraintEnd_toStartOf="@+id/switch2"
+                app:layout_constraintBottom_toTopOf="@+id/N"
+                app:layout_constraintEnd_toStartOf="@+id/A"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <Switch
-                android:id="@+id/switch2"
+                android:id="@+id/A"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_marginEnd="44dp"
                 android:layout_marginBottom="48dp"
                 android:text="AfterNoon"
-                app:layout_constraintBottom_toTopOf="@+id/switch5"
-                app:layout_constraintEnd_toStartOf="@+id/switch3" />
+                android:onClick="selectItem"
+                app:layout_constraintBottom_toTopOf="@+id/ES"
+                app:layout_constraintEnd_toStartOf="@+id/E" />
 
             <Switch
-                android:id="@+id/switch3"
+                android:id="@+id/E"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_marginEnd="50dp"
                 android:layout_marginBottom="51dp"
                 android:text="Evening"
-                app:layout_constraintBottom_toTopOf="@+id/switch5"
+                android:onClick="selectItem"
+                app:layout_constraintBottom_toTopOf="@+id/ES"
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <Switch
-                android:id="@+id/switch4"
+                android:id="@+id/N"
                 android:layout_width="90dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="104dp"
                 android:layout_marginEnd="36dp"
                 android:layout_marginBottom="70dp"
                 android:text="Night"
-                app:layout_constraintBottom_toTopOf="@+id/button4"
-                app:layout_constraintEnd_toStartOf="@+id/switch5"
+                android:onClick="selectItem"
+                app:layout_constraintBottom_toTopOf="@+id/addMed"
+                app:layout_constraintEnd_toStartOf="@+id/ES"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <Switch
-                android:id="@+id/switch5"
+                android:id="@+id/ES"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_marginEnd="131dp"
                 android:layout_marginBottom="70dp"
                 android:text="Empty Stomach"
-                app:layout_constraintBottom_toTopOf="@+id/button4"
+                android:onClick="selectItem"
+                app:layout_constraintBottom_toTopOf="@+id/addMed"
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <Button
-                android:id="@+id/button4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/addMed"
+                android:layout_width="138dp"
+                android:layout_height="49dp"
                 android:layout_marginStart="50dp"
                 android:layout_marginEnd="50dp"
                 android:layout_marginBottom="180dp"
-                android:text="Button"
+                android:background="#1F6CF1"
+                android:text="Add Medicine"
+                android:textColor="#fff"
+                android:textSize="18dp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.522"
