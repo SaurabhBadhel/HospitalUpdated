@@ -42,8 +42,8 @@ public ListAdapter(@NonNull FirestoreRecyclerOptions<List> options) {
         public ListHolder(@NonNull final View itemView) {
 
         super( itemView );
-        nameList1=itemView.findViewById( R.id.nameList );
-        ageList1=itemView.findViewById( R.id.ageList );
+        nameList1=itemView.findViewById( R.id.medName);
+        ageList1=itemView.findViewById( R.id.medTime);
 
 
         itemView.setOnClickListener(new View.OnClickListener() {

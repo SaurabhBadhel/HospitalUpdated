@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -52,6 +53,8 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 import com.pureintentions.hospital.Doctor.HistoryAdapter;
+import com.pureintentions.hospital.Doctor.Medicine;
+import com.pureintentions.hospital.Doctor.MedicineAdapter;
 import com.pureintentions.hospital.Doctor.PdfDocumentAdapter;
 
 import java.io.File;
@@ -65,6 +68,8 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import static com.pureintentions.hospital.AddMedicine.Day;
+import static com.pureintentions.hospital.AddMedicine.M;
 import static com.pureintentions.hospital.DoctorSearchScreen.Name;
 import static com.pureintentions.hospital.DoctorSearchScreen.Uid;
 
@@ -72,7 +77,8 @@ public class FragPrescription extends Fragment implements View.OnClickListener, 
     private AppBarConfiguration mAppBarConfiguration;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference reference = db.collection("Prescription");
-    private HistoryAdapter adapter;
+    private MedicineAdapter adapter;
+    ArrayList<Medicine>medicine=new ArrayList<>();
     ArrayList<String> selection1 = new ArrayList<String>();
     ArrayList<String> selection2 = new ArrayList<String>();
     ArrayList<String> selection3 = new ArrayList<String>();
@@ -82,6 +88,7 @@ public class FragPrescription extends Fragment implements View.OnClickListener, 
     Button sendPrescription, btnPrint,addMedi;
     FirebaseFirestore Store;
     Spinner bgSpin,genderSpin;
+    private  ListView medList;
     public static final String TAG = "TAG";
 
     String Text;
@@ -115,6 +122,7 @@ public class FragPrescription extends Fragment implements View.OnClickListener, 
         btnPrint = view.findViewById(R.id.btnPrint);
         sendPrescription = view.findViewById(R.id.sendPrescription);
         Store = FirebaseFirestore.getInstance();
+        medList=view.findViewById(R.id.listMed);
 
 
         sendPrescription.setOnClickListener(this);
@@ -136,6 +144,15 @@ public class FragPrescription extends Fragment implements View.OnClickListener, 
                 startActivity(intent);
             }
         });
+
+        Intent intent=getActivity().getIntent();
+        String name=intent.getStringExtra(AddMedicine.Name);
+        String time=intent.getStringExtra(AddMedicine.Day);
+        String duration=intent.getStringExtra(AddMedicine.M);
+        medicine.add(new Medicine(name,time,duration));
+        adapter =new MedicineAdapter(getContext(),medicine);
+
+
 
         ArrayAdapter<CharSequence> adap=ArrayAdapter.createFromResource(getContext(),R.array.bloodGroup,android.R.layout.simple_spinner_item);
         adap.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -186,6 +203,12 @@ public class FragPrescription extends Fragment implements View.OnClickListener, 
         }catch (ActivityNotFoundException e) {
             Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }
+    }
+
+
+    public void listView(){
+
+
     }
     private void createPDFFile(String Path) {
 

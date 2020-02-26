@@ -75,7 +75,7 @@ public class AddMedicine extends AppCompatActivity {
                     selection.remove( "Morning" );
                 }
                 break;
-
+/*
             case R.id.A:
                 if (checked){
                     selection.add("Afternoon");}
@@ -106,7 +106,7 @@ public class AddMedicine extends AppCompatActivity {
                 else{
                     selection.remove( "Medicine before Food" );
                 }
-                break;
+                break;*/
         }
     }
 
