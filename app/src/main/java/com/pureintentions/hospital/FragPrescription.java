@@ -1,6 +1,7 @@
 package com.pureintentions.hospital;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -63,6 +64,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
@@ -79,6 +81,7 @@ public class FragPrescription extends Fragment implements View.OnClickListener, 
     private CollectionReference reference = db.collection("Prescription");
     private MedicineAdapter adapter;
     ArrayList<Medicine>medicine=new ArrayList<>();
+    ArrayList<String> selection = new ArrayList<String>();
     ArrayList<String> selection1 = new ArrayList<String>();
     ArrayList<String> selection2 = new ArrayList<String>();
     ArrayList<String> selection3 = new ArrayList<String>();
@@ -90,16 +93,18 @@ public class FragPrescription extends Fragment implements View.OnClickListener, 
     Spinner bgSpin,genderSpin;
     private  ListView medList;
     public static final String TAG = "TAG";
-
+    ArrayList<String> arrayList;
+    ArrayAdapter<String>arrayAdapter;
     String Text;
 
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         final View view = inflater.inflate(R.layout.tab_prescription, container, false);
         //  return inflater.inflate(R.layout.tab_prescription,container,false);
+
 
         addMedi=view.findViewById(R.id.addMedi);
         date = view.findViewById(R.id.date);
@@ -137,11 +142,20 @@ public class FragPrescription extends Fragment implements View.OnClickListener, 
             }
         });
 
+
+
+
+        String[] items={""};
+        String[] day={""};
+        arrayList=new ArrayList<>(Arrays.asList(items));
+        //arrayList=new ArrayList<>(Arrays.asList(day));
+        arrayAdapter=new ArrayAdapter<String>(getContext(),R.layout.med_list,R.id.medName,arrayList);
+    //     arrayAdapter=new ArrayAdapter<String>(getContext(),R.layout.med_list,R.id.duration,arrayList);
+        medList.setAdapter(arrayAdapter);
         addMedi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getContext(),AddMedicine.class);
-                startActivity(intent);
+         showInputBox();
             }
         });
 
@@ -191,6 +205,84 @@ public class FragPrescription extends Fragment implements View.OnClickListener, 
 
         return view;
    }
+
+
+   public void showInputBox(){
+
+        final Dialog dialog=new Dialog(getContext());
+        dialog.setTitle("Add Medicine");
+        dialog.setContentView(R.layout.med_box);
+        final EditText medicine= (EditText) dialog.findViewById(R.id.medName1);
+        final EditText day= (EditText) dialog.findViewById(R.id.days);
+
+        medicine.setText("");
+        day.setText("");
+
+        Button addmed=(Button)dialog.findViewById(R.id.addMed);
+        addmed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String name=medicine.getText().toString();
+                String dure=day.getText().toString();
+                arrayList.add(name);
+              //  arrayList.add(dure);
+
+                arrayAdapter.notifyDataSetChanged();
+                dialog.dismiss();
+            }
+        });
+
+         dialog.show();
+
+       }
+
+
+    public void selectItem(View v) {
+        boolean checked=((Switch)v).isChecked();
+        switch (v.getId())
+        {
+            case R.id.M:
+                if (checked){
+                    selection.add("Morning");}
+                else{
+                    selection.remove( "Morning" );
+                }
+                break;
+
+            case R.id.A:
+                if (checked){
+                    selection.add("Afternoon");}
+                else{
+                    selection.remove( "Afternoon" );
+                }
+                break;
+
+            case R.id.E:
+                if (checked){
+                    selection.add("Evening");}
+                else{
+                    selection.remove( "Evening" );
+                }
+                break;
+
+            case R.id.N:
+                if (checked){
+                    selection.add("Night");}
+                else{
+                    selection.remove( "Night" );
+                }
+                break;
+
+            case R.id.ES:
+                if (checked){
+                    selection.add("Medicine before Food");}
+                else{
+                    selection.remove( "Medicine before Food" );
+                }
+                break;
+        }
+    }
 
     private  void  voiceRemark(){
 

@@ -55,6 +55,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -89,6 +90,9 @@ public class DoctorScreen extends AppCompatActivity implements View.OnClickListe
     ImageView remark;
     Button sendPrescription,btnPrint;
     FirebaseFirestore Store;
+
+    ArrayList<String> arrayList;
+    ArrayAdapter<String>arrayAdapter;
     public static final String TAG = "TAG";
 
     @Override
