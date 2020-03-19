@@ -64,7 +64,7 @@ public class AddMedicine extends AppCompatActivity {
 
         }
     }
-    public void selectItem(View v) {
+    public void selectItem5(View v) {
         boolean checked=((Switch)v).isChecked();
         switch (v.getId())
         {

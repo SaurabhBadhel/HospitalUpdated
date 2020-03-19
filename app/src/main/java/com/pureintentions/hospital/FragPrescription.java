@@ -145,13 +145,21 @@ public class FragPrescription extends Fragment implements View.OnClickListener, 
 
 
 
+     //   Medicine M1=new Medicine("aaa","bbbbbbbbbbbbbbbbbbb","cc");
         String[] items={""};
         String[] day={""};
-        arrayList=new ArrayList<>(Arrays.asList(items));
+
+       // ArrayList<Medicine> newMed=new ArrayList<>();
+      //  newMed.add(M1);
+        //arrayList=new ArrayList<>(Arrays.asList(items));
         //arrayList=new ArrayList<>(Arrays.asList(day));
-        arrayAdapter=new ArrayAdapter<String>(getContext(),R.layout.med_list,R.id.medName,arrayList);
+
+    //    MedicineAdapter ad=new MedicineAdapter(getContext(),R.layout.med_list,newMed);
+       // medList.setAdapter(ad);
+
+       // arrayAdapter=new ArrayAdapter<String>(getContext(),R.layout.med_list,R.id.medName,arrayList);
     //     arrayAdapter=new ArrayAdapter<String>(getContext(),R.layout.med_list,R.id.duration,arrayList);
-        medList.setAdapter(arrayAdapter);
+    //    medList.setAdapter(arrayAdapter);
         addMedi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -159,12 +167,12 @@ public class FragPrescription extends Fragment implements View.OnClickListener, 
             }
         });
 
-        Intent intent=getActivity().getIntent();
+       /* Intent intent=getActivity().getIntent();
         String name=intent.getStringExtra(AddMedicine.Name);
         String time=intent.getStringExtra(AddMedicine.Day);
         String duration=intent.getStringExtra(AddMedicine.M);
-        medicine.add(new Medicine(name,time,duration));
-        adapter =new MedicineAdapter(getContext(),medicine);
+        medicine.add(new Medicine(name,time,duration));*/
+      //  adapter =new MedicineAdapter(getContext(),medicine);
 
 
 
@@ -215,7 +223,13 @@ public class FragPrescription extends Fragment implements View.OnClickListener, 
         final EditText medicine= (EditText) dialog.findViewById(R.id.medName1);
         final EditText day= (EditText) dialog.findViewById(R.id.days);
 
-        medicine.setText("");
+
+
+       String finalSelection="";
+       for (String Selection : selection) {
+           finalSelection = finalSelection + Selection + "|";
+       }
+           medicine.setText("");
         day.setText("");
 
         Button addmed=(Button)dialog.findViewById(R.id.addMed);
@@ -223,12 +237,25 @@ public class FragPrescription extends Fragment implements View.OnClickListener, 
             @Override
             public void onClick(View v) {
 
+
+                selectItem(v);
+
+                String finalSelection="";
+                for (String Selection : selection) {
+                    finalSelection = finalSelection + Selection + "|";
+                }
+
                 String name=medicine.getText().toString();
                 String dure=day.getText().toString();
-                arrayList.add(name);
+                Medicine M2=new Medicine(name,finalSelection,dure);
+             //   arrayList.add(M2);
               //  arrayList.add(dure);
+                ArrayList<Medicine> newMed=new ArrayList<>();
+                newMed.add(M2);
 
-                arrayAdapter.notifyDataSetChanged();
+                MedicineAdapter ad=new MedicineAdapter(getContext(),R.layout.med_list,newMed);
+                medList.setAdapter(ad);
+                ad.notifyDataSetChanged();
                 dialog.dismiss();
             }
         });
@@ -239,6 +266,8 @@ public class FragPrescription extends Fragment implements View.OnClickListener, 
 
 
     public void selectItem(View v) {
+
+
         boolean checked=((Switch)v).isChecked();
         switch (v.getId())
         {
